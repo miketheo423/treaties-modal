@@ -4,30 +4,25 @@ import { Context as TreatiesContext } from "../context/TreatiesContext";
 
 const TreatiesModal = () => {
   const [action, setAction] = useState("add");
-  const { state, addTreaty } = useContext(TreatiesContext);
+  const { state, clearSelectedTreaties } = useContext(TreatiesContext);
 
-  const filterTreaties = (treaties, type) => {
-    return treaties.filter(treaty => treaty.type === type);
-  };
-
-  const renderTreatyTable = action => {
-    if (action === "add") {
-      return (
+  const renderTreatyTables = action => {
+    return (
+      <>
         <TreatyTable
+          tab={action}
           action='add'
-          treaties={filterTreaties(state, "applied")}
+          treaties={state.appliedTreaties}
           className={`${action === "add"} && 'active'`}
         />
-      );
-    } else {
-      return (
         <TreatyTable
+          tab={action}
           action='remove'
-          treaties={filterTreaties(state, "available")}
+          treaties={state.availableTreaties}
           className={`${action === "remove"} && 'active'`}
         />
-      );
-    }
+      </>
+    );
   };
 
   return (
@@ -36,14 +31,20 @@ const TreatiesModal = () => {
         <h1 className='title'>Add or Remove Treaties</h1>
         <div className='treaty-tabs'>
           <button
-            onClick={() => setAction("add")}
+            onClick={() => {
+              clearSelectedTreaties();
+              setAction("add");
+            }}
             className={`treaties-tab ${action === "add" &&
               "treaties-tab--active"}`}
           >
             Applied Treaties <span className='treaties-tab__count'>1,203</span>
           </button>
           <button
-            onClick={() => setAction("remove")}
+            onClick={() => {
+              clearSelectedTreaties();
+              setAction("remove");
+            }}
             className={`treaties-tab ${action === "remove" &&
               "treaties-tab--active"}`}
           >
@@ -51,7 +52,9 @@ const TreatiesModal = () => {
           </button>
         </div>
       </header>
-      <section className='panel__body'>{renderTreatyTable(action)}</section>
+      <section className={`panel__body panel__body--${action}`}>
+        {renderTreatyTables(action)}
+      </section>
     </div>
   );
 };

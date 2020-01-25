@@ -23,7 +23,7 @@ $color-blue: #005be7;
 
 .panel {
   width: 70vw;
-  padding: 24px;
+  padding: 24px 22px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -42,7 +42,39 @@ $color-blue: #005be7;
   }
 
   &__body {
+    position: relative;
     width: 100%;
+    overflow: hidden;
+    padding: 0 2px;
+
+    .treaty-table {
+      transition: transform 0.5s ease-in-out;
+
+      &--remove {
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+
+    &--add {
+      .treaty-table--add {
+        transform: translateX(0);
+      }
+      .treaty-table--remove {
+        transform: translateX(115%);
+      }
+    }
+
+    &--remove {
+      .treaty-table--add {
+        transform: translateX(-115%);
+      }
+
+      .treaty-table--remove {
+        transform: translateX(0);
+      }
+    }
   }
 }
 
@@ -177,14 +209,6 @@ $color-blue: #005be7;
     @include button-variation($color-light-grey, $color-dark-grey);
     width: 168px;
     min-width: 168px;
-
-    // .action {
-    //   position: absolute;
-    //   left: 0;
-    //   transform: translateX(-100%);
-    //   display: flex;
-    //   align-items: center;
-    // }
   }
 
   &--add {
