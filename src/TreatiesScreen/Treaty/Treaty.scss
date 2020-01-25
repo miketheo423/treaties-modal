@@ -1,0 +1,29 @@
+.treaties {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  width: 100%;
+  padding: 0;
+
+  .treaty {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+    padding: 16px;
+    flex: 1;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &__label {
+      font-size: 14px;
+      margin-left: 8px;
+      color: $color-dark-grey;
+      line-height: 0;
+    }
+  }
+}
