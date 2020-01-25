@@ -1,15 +1,8 @@
 import React, { useState } from "react";
-import Treaty from "./Treaty/Treaty";
+import Treaty from "../Treaty/Treaty";
 
-const TreatiesModal = () => {
-  const [action, setAction] = useState("add");
+const TreatyTable = ({ action, treaties }) => {
   const [active, setActive] = useState(false);
-  const treaties = [
-    { name: "Treaty 1" },
-    { name: "Treaty 2" },
-    { name: "Treaty 3" },
-    { name: "Treaty 4" }
-  ];
 
   const renderAction = action => {
     if (action === "add") {
@@ -48,33 +41,13 @@ const TreatiesModal = () => {
     }
   };
 
-  const generateTreaties = treaties => {
+  const renderTreaties = treaties => {
     return treaties.map((treaty, index) => {
       return <Treaty key={index} treaty={treaty} />;
     });
   };
-
   return (
-    <div className='panel'>
-      <header className='panel__header'>
-        <h1 className='title'>Add or Remove Treaties</h1>
-        <div className='treaty-tabs'>
-          <button
-            onClick={() => setAction("add")}
-            className={`treaties-tab ${action === "add" &&
-              "treaties-tab--active"}`}
-          >
-            Applied Treaties <span className='treaties-tab__count'>1,203</span>
-          </button>
-          <button
-            onClick={() => setAction("remove")}
-            className={`treaties-tab ${action === "remove" &&
-              "treaties-tab--active"}`}
-          >
-            Available Treaties <span className='treaties-tab__count'>1.2m</span>
-          </button>
-        </div>
-      </header>
+    <div>
       <button
         onClick={() => setActive(!active)}
         className={`treaties-button ${
@@ -87,9 +60,9 @@ const TreatiesModal = () => {
           <span className='counter__base-count counter__count'>0</span>
         </span>
       </button>
-      <ul className='treaties'>{generateTreaties(treaties)}</ul>
+      <ul className='treaties'>{renderTreaties(treaties)}</ul>
     </div>
   );
 };
 
-export default TreatiesModal;
+export default TreatyTable;

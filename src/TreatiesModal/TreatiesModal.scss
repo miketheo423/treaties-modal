@@ -40,6 +40,10 @@ $color-blue: #005be7;
       margin: 0 0 32px;
     }
   }
+
+  &__body {
+    width: 100%;
+  }
 }
 
 .treaty-tabs {
@@ -115,6 +119,7 @@ $color-blue: #005be7;
   border: none;
   font-size: 12px;
   letter-spacing: 0.6px;
+  margin-left: auto;
   position: relative;
   overflow: hidden;
   outline: transparent;

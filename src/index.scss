@@ -23,5 +23,6 @@ code {
     monospace;
 }
 
-@import "./TreatiesScreen/TreatiesScreen.scss";
-@import "./TreatiesScreen/Treaty/Treaty.scss";
+@import "./TreatiesModal/TreatiesModal.scss";
+@import "./TreatiesModal/TreatyTable/TreatyTable.scss";
+@import "./TreatiesModal/Treaty/Treaty.scss";

@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.scss";
-import TreatiesModal from "./TreatiesScreen/TreatiesModal";
+import TreatiesModal from "./TreatiesModal/TreatiesModal";
 
 function App() {
   return <TreatiesModal />;
