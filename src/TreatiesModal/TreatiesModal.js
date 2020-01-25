@@ -1,27 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import TreatyTable from "./TreatyTable/TreatyTable";
+import { Context as TreatiesContext } from "../context/TreatiesContext";
 
 const TreatiesModal = () => {
   const [action, setAction] = useState("add");
-  const appliedTreaties = [
-    { name: "Treaty 1" },
-    { name: "Treaty 2" },
-    { name: "Treaty 3" },
-    { name: "Treaty 4" }
-  ];
-  const availableTreaties = [
-    { name: "Treaty 5" },
-    { name: "Treaty 6" },
-    { name: "Treaty 7" },
-    { name: "Treaty 8" }
-  ];
+  const { state, addTreaty } = useContext(TreatiesContext);
+
+  const filterTreaties = (treaties, type) => {
+    return treaties.filter(treaty => treaty.type === type);
+  };
 
   const renderTreatyTable = action => {
     if (action === "add") {
       return (
         <TreatyTable
           action='add'
-          treaties={appliedTreaties}
+          treaties={filterTreaties(state, "applied")}
           className={`${action === "add"} && 'active'`}
         />
       );
@@ -29,7 +23,7 @@ const TreatiesModal = () => {
       return (
         <TreatyTable
           action='remove'
-          treaties={availableTreaties}
+          treaties={filterTreaties(state, "available")}
           className={`${action === "remove"} && 'active'`}
         />
       );

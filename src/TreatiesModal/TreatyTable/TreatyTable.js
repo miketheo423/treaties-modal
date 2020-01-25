@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context as TreatiesContext } from "../../context/TreatiesContext";
 import Treaty from "../Treaty/Treaty";
 
 const TreatyTable = ({ action, treaties }) => {
   const [active, setActive] = useState(false);
+  const { addTreaty } = useContext(TreatiesContext);
 
   const renderAction = action => {
     if (action === "add") {
@@ -49,7 +51,7 @@ const TreatyTable = ({ action, treaties }) => {
   return (
     <div>
       <button
-        onClick={() => setActive(!active)}
+        onClick={addTreaty}
         className={`treaties-button ${
           active ? `treaties-button--${action}` : "treaties-button--empty"
         }`}
