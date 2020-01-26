@@ -3,7 +3,7 @@ import TreatyTable from "./TreatyTable/TreatyTable";
 import { Context as TreatiesContext } from "../context/TreatiesContext";
 
 const TreatiesModal = () => {
-  const [action, setAction] = useState("add");
+  const [action, setAction] = useState("remove");
   const { state, clearSelectedTreaties } = useContext(TreatiesContext);
 
   const renderTreatyTables = action => {
@@ -11,15 +11,15 @@ const TreatiesModal = () => {
       <>
         <TreatyTable
           tab={action}
-          action='add'
+          action='remove'
           treaties={state.appliedTreaties}
-          className={`${action === "add"} && 'active'`}
+          className={`${action === "remove"} && 'active'`}
         />
         <TreatyTable
           tab={action}
-          action='remove'
+          action='add'
           treaties={state.availableTreaties}
-          className={`${action === "remove"} && 'active'`}
+          className={`${action === "add"} && 'active'`}
         />
       </>
     );
@@ -33,9 +33,9 @@ const TreatiesModal = () => {
           <button
             onClick={() => {
               clearSelectedTreaties();
-              setAction("add");
+              setAction("remove");
             }}
-            className={`treaties-tab ${action === "add" &&
+            className={`treaties-tab ${action === "remove" &&
               "treaties-tab--active"}`}
           >
             Applied Treaties <span className='treaties-tab__count'>1,203</span>
@@ -43,9 +43,9 @@ const TreatiesModal = () => {
           <button
             onClick={() => {
               clearSelectedTreaties();
-              setAction("remove");
+              setAction("add");
             }}
-            className={`treaties-tab ${action === "remove" &&
+            className={`treaties-tab ${action === "add" &&
               "treaties-tab--active"}`}
           >
             Available Treaties <span className='treaties-tab__count'>1.2m</span>

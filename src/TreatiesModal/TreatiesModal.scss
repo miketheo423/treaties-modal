@@ -49,11 +49,22 @@ $color-blue: #005be7;
 
     .treaty-table {
       transition: transform 0.5s ease-in-out;
+      width: 100%;
 
       &--remove {
         position: absolute;
         top: 0;
-        width: 100%;
+        width: calc(100% - 4px);
+      }
+    }
+
+    &--remove {
+      .treaty-table--add {
+        transform: translateX(115%);
+      }
+
+      .treaty-table--remove {
+        transform: translateX(0);
       }
     }
 
@@ -62,17 +73,7 @@ $color-blue: #005be7;
         transform: translateX(0);
       }
       .treaty-table--remove {
-        transform: translateX(115%);
-      }
-    }
-
-    &--remove {
-      .treaty-table--add {
         transform: translateX(-115%);
-      }
-
-      .treaty-table--remove {
-        transform: translateX(0);
       }
     }
   }
