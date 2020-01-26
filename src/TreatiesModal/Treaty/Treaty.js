@@ -4,7 +4,6 @@ import { Context as TreatiesContext } from "../../context/TreatiesContext";
 const Treaty = ({ treaty }) => {
   const { name } = treaty;
   const { state, selectTreaty } = useContext(TreatiesContext);
-  const [checked, setChecked] = useState(false);
 
   const isChecked = (selectedTreaties, treaty) => {
     return selectedTreaties.some(selectedTreaty => {
@@ -20,7 +19,6 @@ const Treaty = ({ treaty }) => {
           type='checkbox'
           onChange={() => {
             selectTreaty(treaty);
-            setChecked(!checked);
           }}
           checked={isChecked(state.selectedTreaties, treaty)}
         />

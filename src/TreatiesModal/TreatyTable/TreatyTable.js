@@ -1,10 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Context as TreatiesContext } from "../../context/TreatiesContext";
 import Treaty from "../Treaty/Treaty";
 
 const TreatyTable = ({ tab, action, treaties }) => {
-  const [active, setActive] = useState(false);
+  const [count, setCount] = useState(0);
   const { state } = useContext(TreatiesContext);
+
+  const renderNextCount = count => {
+    return <span className='counter__next-count'>{count}</span>;
+  };
 
   const renderAction = action => {
     if (action === "add") {
@@ -40,56 +44,11 @@ const TreatyTable = ({ tab, action, treaties }) => {
     }
   };
 
-  const renderButton = action => {
-    if (action === "add") {
-      return (
-        <button
-          className={`treaties-button ${
-            state.selectedTreaties.length > 0
-              ? `treaties-button--add`
-              : "treaties-button--empty"
-          }`}
-        >
-          {renderAction(action)}
-          Selected Treaties
-          <span className='counter'>
-            <span className='counter__base-count counter__count'>
-              {state.selectedTreaties.length}
-            </span>
-          </span>
-        </button>
-      );
-    } else {
-      return (
-        <button
-          className={`treaties-button ${
-            state.selectedTreaties.length > 0 && tab === "remove"
-              ? `treaties-button--remove`
-              : "treaties-button--empty"
-          }`}
-        >
-          <span className='action'>
-            <svg
-              className='icon'
-              xmlns='http://www.w3.org/2000/svg'
-              width='16'
-              height='16'
-              viewBox='0 0 24 24'
-            >
-              <path d='M0 10h24v4h-24z' />
-            </svg>
-            Remove
-          </span>
-          Selected Treaties
-          <span className='counter'>
-            <span className='counter__base-count counter__count'>
-              {state.selectedTreaties.length}
-            </span>
-          </span>
-        </button>
-      );
+  useEffect(() => {
+    if (tab === action) {
+      setCount(state.selectedTreaties.length);
     }
-  };
+  }, [state.selectedTreaties]);
 
   const renderTreaties = treaties => {
     return treaties.map((treaty, index) => {
@@ -100,6 +59,7 @@ const TreatyTable = ({ tab, action, treaties }) => {
   return (
     <div className={`treaty-table treaty-table--${action}`}>
       <button
+        onClick={() => setCount(count + 1)}
         className={`treaties-button ${
           state.selectedTreaties.length > 0
             ? `treaties-button--${action}`
@@ -109,9 +69,8 @@ const TreatyTable = ({ tab, action, treaties }) => {
         <span className='action'>{renderAction(action)}</span>
         Selected Treaties
         <span className='counter'>
-          <span className='counter__base-count counter__count'>
-            {state.selectedTreaties.length}
-          </span>
+          {renderNextCount(count)}
+          <span className='counter__base-count counter__count'>{count}</span>
         </span>
       </button>
       <ul className='treaties'>{renderTreaties(treaties)}</ul>
