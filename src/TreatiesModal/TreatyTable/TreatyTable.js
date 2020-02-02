@@ -7,25 +7,6 @@ function TreatyTable({ tab, action, treaties }) {
   const counterRef = useRef();
   const [currentCount, setCount] = useState(state.selectedTreaties.length);
 
-  const handleCountChange = count => {
-    if (state.selectedTreaties.length === currentCount) return;
-    counterRef.current.style.transform =
-      count > currentCount ? "translateY(18px)" : "translateY(-18px)";
-    setTimeout(() => {
-      counterRef.current.style.transitionDuration = "0s";
-      counterRef.current.style.transform =
-        count > currentCount ? "translateY(-18px)" : "translateY(18px)";
-      // counterRef.current.style.opacity = 0;
-      setCount(count);
-
-      setTimeout(() => {
-        counterRef.current.style.transitionDuration = "0.3s";
-        counterRef.current.style.transform = "translateY(0)";
-        // counterRef.current.style.opacity = 1;
-      }, 20);
-    }, 100);
-  };
-
   const renderAction = action => {
     if (action === "add") {
       return (
@@ -60,11 +41,30 @@ function TreatyTable({ tab, action, treaties }) {
     }
   };
 
+  const handleCountChange = count => {
+    if (state.selectedTreaties.length === currentCount) return;
+    counterRef.current.style.transform =
+      count > currentCount ? "translateY(18px)" : "translateY(-18px)";
+    setTimeout(() => {
+      counterRef.current.style.transitionDuration = "0s";
+      counterRef.current.style.transform =
+        count > currentCount ? "translateY(-18px)" : "translateY(18px)";
+      // counterRef.current.style.opacity = 0;
+      setCount(count);
+
+      setTimeout(() => {
+        counterRef.current.style.transitionDuration = "0.3s";
+        counterRef.current.style.transform = "translateY(0)";
+        // counterRef.current.style.opacity = 1;
+      }, 20);
+    }, 100);
+  };
+
   useEffect(() => {
     if (tab === action) {
       handleCountChange(state.selectedTreaties.length);
     }
-  }, [state.selectedTreaties]);
+  });
 
   const renderTreaties = treaties => {
     return treaties.map((treaty, index) => {
