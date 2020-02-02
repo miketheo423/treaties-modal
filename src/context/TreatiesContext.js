@@ -83,6 +83,35 @@ const treatyReducer = (state, action) => {
         ...state,
         selectedTreaties: []
       };
+    case "update_selected_treaties":
+      let appliedTreaties = [...state.appliedTreaties];
+      let availableTreaties = [...state.availableTreaties];
+
+      action.payload.forEach(treaty => {
+        if (treaty.type === "applied") {
+          appliedTreaties = appliedTreaties.filter(
+            appliedTreaty => appliedTreaty.id !== treaty.id
+          );
+          availableTreaties = [
+            ...availableTreaties,
+            { ...treaty, type: "available" }
+          ];
+        } else {
+          availableTreaties = availableTreaties.filter(
+            availableTreaty => availableTreaty.id !== treaty.id
+          );
+          appliedTreaties = [
+            ...appliedTreaties,
+            { ...treaty, type: "applied" }
+          ];
+        }
+      });
+      return {
+        ...state,
+        availableTreaties,
+        appliedTreaties,
+        selectedTreaties: []
+      };
     default:
       return state;
   }
@@ -106,8 +135,14 @@ const clearSelectedTreaties = dispatch => {
   };
 };
 
+const updateSelectedTreaties = dispatch => {
+  return treaties => {
+    dispatch({ type: "update_selected_treaties", payload: treaties });
+  };
+};
+
 export const { Context, Provider } = createDataContext(
   treatyReducer,
-  { selectTreaty, clearSelectedTreaties },
+  { selectTreaty, clearSelectedTreaties, updateSelectedTreaties },
   { appliedTreaties, availableTreaties, selectedTreaties }
 );

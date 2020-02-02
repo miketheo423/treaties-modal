@@ -3,7 +3,7 @@ import { Context as TreatiesContext } from "../../context/TreatiesContext";
 import Treaty from "../Treaty/Treaty";
 
 function TreatyTable({ tab, action, treaties }) {
-  const { state } = useContext(TreatiesContext);
+  const { state, updateSelectedTreaties } = useContext(TreatiesContext);
   const counterRef = useRef();
   const [currentCount, setCount] = useState(state.selectedTreaties.length);
 
@@ -75,6 +75,7 @@ function TreatyTable({ tab, action, treaties }) {
   return (
     <div className={`treaty-table treaty-table--${action}`}>
       <button
+        onClick={() => updateSelectedTreaties(state.selectedTreaties)}
         className={`treaties-button ${
           state.selectedTreaties.length > 0
             ? `treaties-button--${action}`
