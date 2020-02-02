@@ -55,6 +55,9 @@ const TreatiesModal = () => {
       <section className={`panel__body panel__body--${action}`}>
         {renderTreatyTables(action)}
       </section>
+      <div className='panel__footer'>
+        <button className='finish'>Finish</button>
+      </div>
     </div>
   );
 };

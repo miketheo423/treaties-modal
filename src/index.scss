@@ -23,6 +23,10 @@ code {
     monospace;
 }
 
+button {
+  cursor: pointer;
+}
+
 @import "./TreatiesModal/TreatiesModal.scss";
 @import "./TreatiesModal/TreatyTable/TreatyTable.scss";
 @import "./TreatiesModal/Treaty/Treaty.scss";

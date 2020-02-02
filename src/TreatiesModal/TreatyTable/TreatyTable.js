@@ -1,13 +1,29 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { Context as TreatiesContext } from "../../context/TreatiesContext";
 import Treaty from "../Treaty/Treaty";
 
-const TreatyTable = ({ tab, action, treaties }) => {
-  const [count, setCount] = useState(0);
+function TreatyTable({ tab, action, treaties }) {
   const { state } = useContext(TreatiesContext);
+  const counterRef = useRef();
+  const [currentCount, setCount] = useState(state.selectedTreaties.length);
 
-  const renderNextCount = count => {
-    return <span className='counter__next-count'>{count}</span>;
+  const handleCountChange = count => {
+    if (state.selectedTreaties.length === currentCount) return;
+    counterRef.current.style.transform =
+      count > currentCount ? "translateY(18px)" : "translateY(-18px)";
+    setTimeout(() => {
+      counterRef.current.style.transitionDuration = "0s";
+      counterRef.current.style.transform =
+        count > currentCount ? "translateY(-18px)" : "translateY(18px)";
+      // counterRef.current.style.opacity = 0;
+      setCount(count);
+
+      setTimeout(() => {
+        counterRef.current.style.transitionDuration = "0.3s";
+        counterRef.current.style.transform = "translateY(0)";
+        // counterRef.current.style.opacity = 1;
+      }, 20);
+    }, 100);
   };
 
   const renderAction = action => {
@@ -46,7 +62,7 @@ const TreatyTable = ({ tab, action, treaties }) => {
 
   useEffect(() => {
     if (tab === action) {
-      setCount(state.selectedTreaties.length);
+      handleCountChange(state.selectedTreaties.length);
     }
   }, [state.selectedTreaties]);
 
@@ -59,7 +75,6 @@ const TreatyTable = ({ tab, action, treaties }) => {
   return (
     <div className={`treaty-table treaty-table--${action}`}>
       <button
-        onClick={() => setCount(count + 1)}
         className={`treaties-button ${
           state.selectedTreaties.length > 0
             ? `treaties-button--${action}`
@@ -69,13 +84,14 @@ const TreatyTable = ({ tab, action, treaties }) => {
         <span className='action'>{renderAction(action)}</span>
         Selected Treaties
         <span className='counter'>
-          {renderNextCount(count)}
-          <span className='counter__base-count counter__count'>{count}</span>
+          <span ref={counterRef} className='counter__base-count counter__count'>
+            {currentCount}
+          </span>
         </span>
       </button>
       <ul className='treaties'>{renderTreaties(treaties)}</ul>
     </div>
   );
-};
+}
 
 export default TreatyTable;

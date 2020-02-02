@@ -48,7 +48,7 @@ $color-blue: #005be7;
     padding: 0 2px;
 
     .treaty-table {
-      transition: transform 0.5s ease-in-out;
+      transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
       width: 100%;
 
       &--remove {
@@ -60,7 +60,7 @@ $color-blue: #005be7;
 
     &--remove {
       .treaty-table--add {
-        transform: translateX(115%);
+        transform: translateX(105%);
       }
 
       .treaty-table--remove {
@@ -73,7 +73,29 @@ $color-blue: #005be7;
         transform: translateX(0);
       }
       .treaty-table--remove {
-        transform: translateX(-115%);
+        transform: translateX(-105%);
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 18px;
+
+    .finish {
+      background-color: $color-blue;
+      color: #fff;
+      padding: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      border: none;
+      font-size: 14px;
+      letter-spacing: 0.4px;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: darken($color-blue, 10%);
       }
     }
   }
@@ -93,7 +115,6 @@ $color-blue: #005be7;
     border-bottom: 1px solid transparent;
     padding: 0 24px 6px;
     outline: transparent;
-    cursor: pointer;
     display: flex;
     align-items: center;
     transition: all 0.2s linear;
@@ -139,105 +160,6 @@ $color-blue: #005be7;
           transform: translateX(0);
         }
       }
-    }
-  }
-}
-
-.treaties-button {
-  border-radius: 25px;
-  padding: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  border: none;
-  font-size: 12px;
-  letter-spacing: 0.6px;
-  margin-left: auto;
-  position: relative;
-  overflow: hidden;
-  outline: transparent;
-  transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-
-  .action {
-    letter-spacing: inherit;
-    transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    position: absolute;
-    left: 0;
-    transform: translateX(-100%);
-    display: flex;
-    align-items: center;
-    text-transform: capitalize;
-  }
-
-  .counter {
-    border-radius: 100%;
-    padding: 2px;
-    color: #fff;
-    width: 14px;
-    height: 14px;
-    font-weight: 500;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-left: 8px;
-    line-height: 0;
-    transition: inherit;
-    overflow: hidden;
-    position: relative;
-    font-size: 12px;
-    font-weight: 300;
-
-    &__base-count {
-      transform: translateY(0px);
-    }
-
-    &__count {
-      position: relative;
-      transition: inherit;
-    }
-  }
-
-  .icon {
-    width: 16px;
-    height: 16px;
-    font-weight: bold;
-    display: block;
-    margin-right: 8px;
-  }
-
-  &--empty {
-    @include button-variation($color-light-grey, $color-dark-grey);
-    width: 168px;
-    min-width: 168px;
-  }
-
-  &--add {
-    @include button-variation($color-light-green, $color-dark-green);
-    width: 212px;
-    cursor: pointer;
-
-    .action {
-      transform: translateX(18px);
-    }
-
-    .counter {
-      &__next-count {
-        transform: translateY(0px);
-      }
-
-      &__base-count {
-        transform: translateY(14px);
-      }
-    }
-  }
-
-  &--remove {
-    @include button-variation($color-light-red, $color-dark-red);
-    width: 234px;
-
-    .action {
-      transform: translateX(25%);
     }
   }
 }
