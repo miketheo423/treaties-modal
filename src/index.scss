@@ -25,6 +25,9 @@ code {
 
 button {
   cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 @import "./TreatiesModal/TreatiesModal.scss";

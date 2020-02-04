@@ -28,7 +28,23 @@ const TreatiesModal = () => {
   return (
     <div className='panel'>
       <header className='panel__header'>
-        <h1 className='title'>Add or Remove Treaties</h1>
+        <div class='title-container'>
+          <h1 className='title'>Add or Remove Treaties</h1>
+          <svg
+            className='close'
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 100 100'
+          >
+            <g stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
+              <g fill='#222222'>
+                <polygon points='74 31.5 68.5 26 50 44.5 31.5 26 26 31.5 44.5 50 26 68.5 31.5 74 50 55.5 68.5 74 74 68.5 55.5 50'></polygon>
+              </g>
+              <g fill='#222222'>
+                <polygon points='74 31.5 68.5 26 50 44.5 31.5 26 26 31.5 44.5 50 26 68.5 31.5 74 50 55.5 68.5 74 74 68.5 55.5 50'></polygon>
+              </g>
+            </g>
+          </svg>
+        </div>
         <div className='treaty-tabs'>
           <button
             onClick={() => {
