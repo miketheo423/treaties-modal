@@ -36,9 +36,17 @@ function TreatyTable({ tab, action, treaties }) {
   });
 
   const renderTreaties = treaties => {
-    return treaties.map((treaty, index) => {
-      return <Treaty key={index} treaty={treaty} />;
-    });
+    if (treaties.length === 0) {
+      return (
+        <h2 className='empty-message'>
+          No {action === "add" ? "Available" : "Applied"} Treaties
+        </h2>
+      );
+    } else {
+      return treaties.map((treaty, index) => {
+        return <Treaty key={index} treaty={treaty} />;
+      });
+    }
   };
 
   return (
@@ -59,7 +67,11 @@ function TreatyTable({ tab, action, treaties }) {
           </span>
         </span>
       </button>
-      <ul className='treaties'>{renderTreaties(treaties)}</ul>
+      <ul
+        className={`treaties ${treaties.length === 0 ? "treaties--empty" : ""}`}
+      >
+        {renderTreaties(treaties)}
+      </ul>
     </div>
   );
 }

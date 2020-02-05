@@ -22,25 +22,24 @@ $color-blue: #005be7;
 }
 
 .panel {
-  width: 94vw;
-  height: 90vh;
   padding: 24px 22px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   background-color: #fff;
-  z-index: 10;
+  flex: 1;
 
-  &::after {
-    content: "";
-    position: fixed;
+  &-container {
+    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.15);
-    z-index: -1;
+    padding: 24px;
+    display: flex;
+    justify-content: center;
   }
 
   &__header {
@@ -75,7 +74,7 @@ $color-blue: #005be7;
     flex: 1;
 
     .treaty-table {
-      transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+      transition: all 0.5s ease-in-out;
       width: 100%;
 
       &--remove {

@@ -26,40 +26,44 @@ const TreatiesModal = () => {
   };
 
   return (
-    <div className='panel'>
-      <header className='panel__header'>
-        <div class='title-container'>
-          <h1 className='title'>Add or Remove Treaties</h1>
-          <CloseIcon />
+    <div className='panel-container'>
+      <div className='panel'>
+        <header className='panel__header'>
+          <div className='title-container'>
+            <h1 className='title'>Add or Remove Treaties</h1>
+            <CloseIcon />
+          </div>
+          <div className='treaty-tabs'>
+            <button
+              onClick={() => {
+                clearSelectedTreaties();
+                setAction("remove");
+              }}
+              className={`treaties-tab ${action === "remove" &&
+                "treaties-tab--active"}`}
+            >
+              Applied Treaties
+              <span className='treaties-tab__count'>1,203</span>
+            </button>
+            <button
+              onClick={() => {
+                clearSelectedTreaties();
+                setAction("add");
+              }}
+              className={`treaties-tab ${action === "add" &&
+                "treaties-tab--active"}`}
+            >
+              Available Treaties
+              <span className='treaties-tab__count'>1.2m</span>
+            </button>
+          </div>
+        </header>
+        <section className={`panel__body panel__body--${action}`}>
+          {renderTreatyTables(action)}
+        </section>
+        <div className='panel__footer'>
+          <button className='finish'>Finish</button>
         </div>
-        <div className='treaty-tabs'>
-          <button
-            onClick={() => {
-              clearSelectedTreaties();
-              setAction("remove");
-            }}
-            className={`treaties-tab ${action === "remove" &&
-              "treaties-tab--active"}`}
-          >
-            Applied Treaties <span className='treaties-tab__count'>1,203</span>
-          </button>
-          <button
-            onClick={() => {
-              clearSelectedTreaties();
-              setAction("add");
-            }}
-            className={`treaties-tab ${action === "add" &&
-              "treaties-tab--active"}`}
-          >
-            Available Treaties <span className='treaties-tab__count'>1.2m</span>
-          </button>
-        </div>
-      </header>
-      <section className={`panel__body panel__body--${action}`}>
-        {renderTreatyTables(action)}
-      </section>
-      <div className='panel__footer'>
-        <button className='finish'>Finish</button>
       </div>
     </div>
   );

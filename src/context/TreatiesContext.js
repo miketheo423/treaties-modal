@@ -20,6 +20,26 @@ const appliedTreaties = [
     id: Math.floor(Math.random() * 999999),
     name: "Treaty #4",
     type: "applied"
+  },
+  {
+    id: Math.floor(Math.random() * 999999),
+    name: "Treaty #5",
+    type: "applied"
+  },
+  {
+    id: Math.floor(Math.random() * 999999),
+    name: "Treaty #6",
+    type: "applied"
+  },
+  {
+    id: Math.floor(Math.random() * 999999),
+    name: "Treaty #7",
+    type: "applied"
+  },
+  {
+    id: Math.floor(Math.random() * 999999),
+    name: "Treaty #8",
+    type: "applied"
   }
 ];
 
@@ -105,6 +125,12 @@ const treatyReducer = (state, action) => {
             { ...treaty, type: "applied" }
           ];
         }
+      });
+      console.log({
+        ...state,
+        availableTreaties,
+        appliedTreaties,
+        selectedTreaties: []
       });
       return {
         ...state,
