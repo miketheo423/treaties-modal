@@ -4,7 +4,7 @@
     width: 100%;
     overflow-x: auto;
     position: absolute;
-    top: 54px;
+    top: 60px;
   }
 
   &--remove {
@@ -91,12 +91,12 @@
       @include button-variation($color-light-grey, $color-dark-grey);
       width: 168px;
       min-width: 168px;
+      cursor: default;
     }
 
     &--add {
       @include button-variation($color-light-green, $color-dark-green);
       width: 212px;
-      cursor: pointer;
 
       .action {
         transform: translateX(18px);

@@ -4,41 +4,113 @@ const appliedTreaties = [
   {
     id: Math.floor(Math.random() * 999999),
     name: "Treaty #1",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
     type: "applied"
   },
   {
     id: Math.floor(Math.random() * 999999),
     name: "Treaty #2",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
     type: "applied"
   },
   {
     id: Math.floor(Math.random() * 999999),
     name: "Treaty #3",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
     type: "applied"
   },
   {
     id: Math.floor(Math.random() * 999999),
     name: "Treaty #4",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
     type: "applied"
   },
   {
     id: Math.floor(Math.random() * 999999),
     name: "Treaty #5",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
     type: "applied"
   },
   {
     id: Math.floor(Math.random() * 999999),
     name: "Treaty #6",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
     type: "applied"
   },
   {
     id: Math.floor(Math.random() * 999999),
     name: "Treaty #7",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
     type: "applied"
   },
   {
     id: Math.floor(Math.random() * 999999),
     name: "Treaty #8",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
     type: "applied"
   }
 ];
@@ -46,22 +118,58 @@ const appliedTreaties = [
 const availableTreaties = [
   {
     id: Math.floor(Math.random() * 999999),
-    name: "Treaty #5",
+    name: "Treaty #9",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
     type: "available"
   },
   {
     id: Math.floor(Math.random() * 999999),
-    name: "Treaty #6",
+    name: "Treaty #10",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
     type: "available"
   },
   {
     id: Math.floor(Math.random() * 999999),
-    name: "Treaty #7",
+    name: "Treaty #11",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
     type: "available"
   },
   {
     id: Math.floor(Math.random() * 999999),
-    name: "Treaty #8",
+    name: "Treaty #12",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
     type: "available"
   }
 ];
@@ -70,16 +178,6 @@ const selectedTreaties = [];
 
 const treatyReducer = (state, action) => {
   switch (action.type) {
-    // case "remove_treaty":
-    //   if(action.payload)
-    //   return {
-    //     ...state,
-    //     ...{
-    //       id: Math.floor(Math.random() * 999999),
-    //       name: `Treaty #${state.length + 1}`,
-    //       type: action.payload
-    //     }
-    //   };
     case "select_treaty":
       if (
         state.selectedTreaties.some(treaty => {
@@ -126,12 +224,6 @@ const treatyReducer = (state, action) => {
           ];
         }
       });
-      console.log({
-        ...state,
-        availableTreaties,
-        appliedTreaties,
-        selectedTreaties: []
-      });
       return {
         ...state,
         availableTreaties,
@@ -142,12 +234,6 @@ const treatyReducer = (state, action) => {
       return state;
   }
 };
-
-// const removeTreaty = dispatch => {
-//   return treaty => {
-//     dispatch({ type: "remove_treaty", payload: treatyId });
-//   };
-// };
 
 const selectTreaty = dispatch => {
   return treaty => {

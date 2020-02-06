@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
-import { Context as TreatiesContext } from "../../context/TreatiesContext";
+import React from "react";
 import Treaty from "../Treaty/Treaty";
 
 function TreatyTable({ tab, action, treaties }) {
