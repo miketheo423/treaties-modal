@@ -21,16 +21,16 @@ function TreatyTable({ tab, action, treaties }) {
       <table className='table'>
         <thead>
           <tr className='table__header'>
-            <th className='title'>Name</th>
-            <th className='title'>Number</th>
-            <th className='title'>Type</th>
-            <th className='title'>Currency</th>
-            <th className='title'>Per Risk Limit</th>
-            <th className='title'>Occurance Limit</th>
-            <th className='title'>Attachment Point</th>
-            <th className='title'>Attachment basis</th>
-            <th className='title'>Lines of Business</th>
-            <th className='title'>Cedant</th>
+            <th align='left'>Name</th>
+            <th align='left'>Number</th>
+            <th align='left'>Type</th>
+            <th align='left'>Currency</th>
+            <th align='right'>Per Risk Limit</th>
+            <th align='right'>Occurance Limit</th>
+            <th align='right'>Attachment Point</th>
+            <th align='left'>Attachment basis</th>
+            <th align='left'>Lines of Business</th>
+            <th align='left'>Cedant</th>
           </tr>
         </thead>
         <tbody>{renderTreaties(treaties)}</tbody>

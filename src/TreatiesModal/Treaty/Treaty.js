@@ -43,8 +43,8 @@ const Treaty = ({ treaty, action }) => {
         <td>{treatyType}</td>
         <td>{currency}</td>
         <td>{perRiskLimit}</td>
-        <td>{occuranceLimit}</td>
-        <td>{attachmentPoint}</td>
+        <td align='right'>{occuranceLimit}</td>
+        <td align='right'>{attachmentPoint}</td>
         <td>{attachmentBasis}</td>
         <td>{lineOfBusiniess}</td>
         <td>{cedant}</td>
