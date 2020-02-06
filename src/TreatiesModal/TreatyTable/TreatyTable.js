@@ -3,38 +3,6 @@ import { Context as TreatiesContext } from "../../context/TreatiesContext";
 import Treaty from "../Treaty/Treaty";
 
 function TreatyTable({ tab, action, treaties }) {
-  const { state, updateSelectedTreaties } = useContext(TreatiesContext);
-  const counterRef = useRef();
-  const [currentCount, setCount] = useState(state.selectedTreaties.length);
-
-  const renderAction = action =>
-    action === "add" ? <AddIcon /> : <RemoveIcon />;
-
-  const handleCountChange = count => {
-    if (state.selectedTreaties.length === currentCount) return;
-    counterRef.current.style.transform =
-      count > currentCount ? "translateY(18px)" : "translateY(-18px)";
-    setTimeout(() => {
-      counterRef.current.style.transitionDuration = "0s";
-      counterRef.current.style.transform =
-        count > currentCount ? "translateY(-18px)" : "translateY(18px)";
-      // counterRef.current.style.opacity = 0;
-      setCount(count);
-
-      setTimeout(() => {
-        counterRef.current.style.transitionDuration = "0.3s";
-        counterRef.current.style.transform = "translateY(0)";
-        // counterRef.current.style.opacity = 1;
-      }, 20);
-    }, 100);
-  };
-
-  useEffect(() => {
-    if (tab === action) {
-      handleCountChange(state.selectedTreaties.length);
-    }
-  });
-
   const renderTreaties = treaties => {
     if (treaties.length === 0) {
       return (
@@ -44,66 +12,32 @@ function TreatyTable({ tab, action, treaties }) {
       );
     } else {
       return treaties.map((treaty, index) => {
-        return <Treaty key={index} treaty={treaty} />;
+        return <Treaty key={index} treaty={treaty} action={action} />;
       });
     }
   };
 
   return (
-    <div className={`treaty-table treaty-table--${action}`}>
-      <button
-        onClick={() => updateSelectedTreaties(state.selectedTreaties)}
-        className={`treaties-button ${
-          state.selectedTreaties.length > 0
-            ? `treaties-button--${action}`
-            : "treaties-button--empty"
-        }`}
-      >
-        <span className='action'>{renderAction(action)}</span>
-        Selected Treaties
-        <span className='counter'>
-          <span ref={counterRef} className='counter__base-count counter__count'>
-            {currentCount}
-          </span>
-        </span>
-      </button>
-      <ul
-        className={`treaties ${treaties.length === 0 ? "treaties--empty" : ""}`}
-      >
-        {renderTreaties(treaties)}
-      </ul>
+    <div className={`treaties-section treaties-section--${action}`}>
+      <table className='table'>
+        <thead>
+          <tr className='table__header'>
+            <th className='title'>Name</th>
+            <th className='title'>Number</th>
+            <th className='title'>Type</th>
+            <th className='title'>Currency</th>
+            <th className='title'>Per Risk Limit</th>
+            <th className='title'>Occurance Limit</th>
+            <th className='title'>Attachment Point</th>
+            <th className='title'>Attachment basis</th>
+            <th className='title'>Lines of Business</th>
+            <th className='title'>Cedant</th>
+          </tr>
+        </thead>
+        <tbody>{renderTreaties(treaties)}</tbody>
+      </table>
     </div>
   );
 }
-
-const AddIcon = () => (
-  <>
-    <svg
-      className='icon'
-      xmlns='http://www.w3.org/2000/svg'
-      width='16'
-      height='16'
-      viewBox='0 0 24 24'
-    >
-      <path d='M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z' />
-    </svg>
-    Add
-  </>
-);
-
-const RemoveIcon = () => (
-  <>
-    <svg
-      className='icon'
-      xmlns='http://www.w3.org/2000/svg'
-      width='16'
-      height='16'
-      viewBox='0 0 24 24'
-    >
-      <path d='M0 10h24v4h-24z' />
-    </svg>
-    Remove
-  </>
-);
 
 export default TreatyTable;

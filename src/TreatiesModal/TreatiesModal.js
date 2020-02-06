@@ -1,10 +1,37 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import TreatyTable from "./TreatyTable/TreatyTable";
 import { Context as TreatiesContext } from "../context/TreatiesContext";
+import { useRef } from "react";
 
 const TreatiesModal = () => {
   const [action, setAction] = useState("remove");
-  const { state, clearSelectedTreaties } = useContext(TreatiesContext);
+  const { state, clearSelectedTreaties, updateSelectedTreaties } = useContext(
+    TreatiesContext
+  );
+  const counterRef = useRef();
+  const [currentCount, setCount] = useState(state.selectedTreaties.length);
+
+  const handleCountChange = count => {
+    if (state.selectedTreaties.length === currentCount) return;
+    counterRef.current.style.transform =
+      count > currentCount ? "translateY(18px)" : "translateY(-18px)";
+    setTimeout(() => {
+      counterRef.current.style.transitionDuration = "0s";
+      counterRef.current.style.transform =
+        count > currentCount ? "translateY(-18px)" : "translateY(18px)";
+      // counterRef.current.style.opacity = 0;
+      setCount(count);
+
+      setTimeout(() => {
+        counterRef.current.style.transitionDuration = "0.3s";
+        counterRef.current.style.transform = "translateY(0)";
+        // counterRef.current.style.opacity = 1;
+      }, 20);
+    }, 100);
+  };
+
+  const renderAction = action =>
+    action === "add" ? <AddIcon /> : <RemoveIcon />;
 
   const renderTreatyTables = action => {
     return (
@@ -24,6 +51,10 @@ const TreatiesModal = () => {
       </>
     );
   };
+
+  useEffect(() => {
+    handleCountChange(state.selectedTreaties.length);
+  });
 
   return (
     <div className='panel-container'>
@@ -59,7 +90,26 @@ const TreatiesModal = () => {
           </div>
         </header>
         <section className={`panel__body panel__body--${action}`}>
-          {renderTreatyTables(action)}
+          <button
+            onClick={() => updateSelectedTreaties(state.selectedTreaties)}
+            className={`treaties-button ${
+              state.selectedTreaties.length > 0
+                ? `treaties-button--${action}`
+                : "treaties-button--empty"
+            }`}
+          >
+            <span className='action'>{renderAction(action)}</span>
+            Selected Treaties
+            <span className='counter'>
+              <span
+                ref={counterRef}
+                className='counter__base-count counter__count'
+              >
+                {currentCount}
+              </span>
+            </span>
+          </button>
+          <div className='tables'>{renderTreatyTables(action)}</div>
         </section>
         <div className='panel__footer'>
           <button className='finish'>Finish</button>
@@ -84,6 +134,36 @@ const CloseIcon = () => (
       </g>
     </g>
   </svg>
+);
+
+const AddIcon = () => (
+  <>
+    <svg
+      className='icon'
+      xmlns='http://www.w3.org/2000/svg'
+      width='16'
+      height='16'
+      viewBox='0 0 24 24'
+    >
+      <path d='M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z' />
+    </svg>
+    Add
+  </>
+);
+
+const RemoveIcon = () => (
+  <>
+    <svg
+      className='icon'
+      xmlns='http://www.w3.org/2000/svg'
+      width='16'
+      height='16'
+      viewBox='0 0 24 24'
+    >
+      <path d='M0 10h24v4h-24z' />
+    </svg>
+    Remove
+  </>
 );
 
 export default TreatiesModal;

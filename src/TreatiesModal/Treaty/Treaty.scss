@@ -1,40 +1,62 @@
-.treaties {
-  align-self: flex-start;
-  display: flex;
-  flex-direction: column;
-  margin-top: 24px;
-  width: calc(100% - 4px);
-  padding: 2px;
-  height: 64vh;
-  overflow-y: scroll;
+.treaty {
+  margin-bottom: 16px;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  position: relative;
 
-  &--empty {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  &:last-child {
+    margin-bottom: 0;
+  }
 
-    .empty-message {
-      color: #005be7;
+  &__label {
+    font-size: 14px;
+    color: $color-dark-grey;
+    padding-left: 30px;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 16px;
+      width: 16px;
+      border: 2px solid rgba($color-dark-grey, 0.8);
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    &:hover {
+      .checkmark {
+        &--add {
+          background-color: $color-light-green;
+        }
+
+        &--remove {
+          background-color: $color-light-red;
+        }
+      }
     }
   }
 
-  .treaty {
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
-    padding: 16px;
+  &__checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
 
-    &:last-child {
-      margin-bottom: 0;
-    }
+    &:checked ~ .checkmark {
+      &--add {
+        background-color: $color-dark-green;
+      }
 
-    &__label {
-      font-size: 14px;
-      margin-left: 8px;
-      color: $color-dark-grey;
-      line-height: 0;
+      &--remove {
+        background-color: $color-dark-red;
+      }
     }
   }
 }
