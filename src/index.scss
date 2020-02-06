@@ -28,6 +28,10 @@ button {
   background: transparent;
   border: none;
   outline: none;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 @import "./TreatiesModal/TreatiesModal.scss";

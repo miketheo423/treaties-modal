@@ -91,6 +91,7 @@ const TreatiesModal = () => {
         </header>
         <section className={`panel__body panel__body--${action}`}>
           <button
+            disabled={state.selectedTreaties.length === 0}
             onClick={() => updateSelectedTreaties(state.selectedTreaties)}
             className={`treaties-button ${
               state.selectedTreaties.length > 0
