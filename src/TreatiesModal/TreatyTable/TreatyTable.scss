@@ -5,6 +5,17 @@
     overflow-x: auto;
     position: absolute;
     top: 60px;
+
+    &--empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: calc(100% - 42px);
+
+      .empty-message {
+        color: $color-blue;
+      }
+    }
   }
 
   &--remove {
