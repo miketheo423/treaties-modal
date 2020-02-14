@@ -1,13 +1,18 @@
 .treaty {
-  margin-bottom: 16px;
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 16px;
   position: relative;
 
   &:last-child {
     margin-bottom: 0;
   }
+}
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 
   &__label {
     font-size: 14px;
@@ -26,6 +31,20 @@
       border: 2px solid rgba($color-dark-grey, 0.8);
       border-radius: 2px;
       transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:after {
+        content: "";
+        display: block;
+        width: 8px;
+        height: 0px;
+        border: solid white;
+        border-width: 1px;
+        opacity: 0;
+        transition: opacity 0.2s linear;
+      }
     }
 
     &:hover {
@@ -41,20 +60,18 @@
     }
   }
 
-  &__checkbox {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
+  &:checked ~ .checkmark {
+    &--add {
+      background-color: $color-dark-green;
+    }
 
-    &:checked ~ .checkmark {
-      &--add {
-        background-color: $color-dark-green;
-      }
+    &--remove {
+      background-color: $color-dark-red;
+    }
 
-      &--remove {
-        background-color: $color-dark-red;
+    &--deselect {
+      &:after {
+        opacity: 1;
       }
     }
   }

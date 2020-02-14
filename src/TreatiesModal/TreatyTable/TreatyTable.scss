@@ -140,23 +140,43 @@
 
     &__header {
       background-color: $color-light-grey;
+      display: flex;
     }
 
-    th,
-    td {
-      font-size: 14px;
-      color: $color-dark-grey;
-      white-space: nowrap;
-      min-width: 120px;
+    thead,
+    tbody {
+      display: block;
     }
 
-    th {
-      font-weight: bold;
-      padding: 8px 16px;
+    tbody {
+      height: 58vh;
+      overflow-y: auto;
     }
 
-    td {
-      padding: 16px 16px;
+    tr {
+      flex: 1;
+      display: flex;
+
+      th,
+      td {
+        font-size: 14px;
+        color: $color-dark-grey;
+        white-space: nowrap;
+        flex: 1;
+      }
+
+      th {
+        font-weight: bold;
+        padding: 12px 16px;
+      }
+
+      td {
+        padding: 16px;
+
+        &:last-child {
+          padding-right: 8px;
+        }
+      }
     }
   }
 }

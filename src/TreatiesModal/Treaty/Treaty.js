@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Context as TreatiesContext } from "../../context/TreatiesContext";
 
-const Treaty = ({ treaty, action }) => {
+const Treaty = ({ treaty, action, onSelect }) => {
   const {
     name,
     number,
@@ -26,11 +26,12 @@ const Treaty = ({ treaty, action }) => {
     <>
       <tr className='treaty'>
         <td>
-          <label className='treaty__label'>
+          <label className='checkbox__label'>
             <input
-              className='treaty__checkbox'
+              className='checkbox'
               type='checkbox'
               onChange={() => {
+                onSelect(treaty);
                 selectTreaty(treaty);
               }}
               checked={isChecked(state.selectedTreaties, treaty)}
@@ -42,7 +43,7 @@ const Treaty = ({ treaty, action }) => {
         <td>{number}</td>
         <td>{treatyType}</td>
         <td>{currency}</td>
-        <td>{perRiskLimit}</td>
+        <td align='right'>{perRiskLimit}</td>
         <td align='right'>{occuranceLimit}</td>
         <td align='right'>{attachmentPoint}</td>
         <td>{attachmentBasis}</td>
