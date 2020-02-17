@@ -44,11 +44,11 @@ function TreatyTable({ tab, action, treaties }) {
                     }}
                     checked={state.allSelected}
                   />
+                  Name
                   <span
                     className={`checkmark checkmark--${action} checkmark--deselect`}
                   ></span>
                 </label>
-                Name
               </th>
               <th align='left'>Number</th>
               <th align='left'>Type</th>
@@ -89,6 +89,10 @@ function TreatyTable({ tab, action, treaties }) {
   useEffect(() => {
     setTableHeight();
     window.addEventListener("resize", setTableHeight);
+    // unmount hook
+    return () => {
+      window.removeEventListener("resize", setTableHeight);
+    };
   }, []);
 
   return (

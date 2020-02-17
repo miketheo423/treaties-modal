@@ -140,7 +140,6 @@
 
     &__header {
       background-color: $color-light-grey;
-      display: flex;
     }
 
     thead,
@@ -161,8 +160,8 @@
       td {
         font-size: 14px;
         color: $color-dark-grey;
-        white-space: nowrap;
         flex: 1;
+        min-width: 120px;
       }
 
       th {
