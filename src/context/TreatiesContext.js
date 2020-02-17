@@ -235,7 +235,8 @@ const treatyReducer = (state, action) => {
         ...state,
         availableTreaties,
         appliedTreaties,
-        selectedTreaties: []
+        selectedTreaties: [],
+        allSelected: false
       };
     default:
       return state;
