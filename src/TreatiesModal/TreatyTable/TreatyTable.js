@@ -37,7 +37,6 @@ function TreatyTable({ tab, action, treaties }) {
                     className='checkbox'
                     type='checkbox'
                     onChange={() => {
-                      console.log("state.allSelected", state.allSelected);
                       handleSelectAll(treaties, state.allSelected);
                     }}
                     checked={state.allSelected}
@@ -71,7 +70,7 @@ function TreatyTable({ tab, action, treaties }) {
     return treaties.map((treaty, index) => {
       return (
         <Treaty
-          key={index}
+          key={treaty.id}
           treaty={treaty}
           action={action}
           onSelect={treaty => (treaty.selected = !treaty.selected)}
@@ -86,12 +85,6 @@ function TreatyTable({ tab, action, treaties }) {
   };
 
   const handleDeselectMarker = () => {
-    console.log(
-      "state.selectedTreaties.length",
-      state.selectedTreaties.length,
-      "treaties.length",
-      treaties.length
-    );
     return state.selectedTreaties.length === treaties.length
       ? setDeselect(false)
       : setDeselect(true);

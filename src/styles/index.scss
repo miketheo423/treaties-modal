@@ -33,7 +33,7 @@ button {
     cursor: not-allowed;
   }
 }
-
-@import "./TreatiesModal/TreatiesModal.scss";
-@import "./TreatiesModal/TreatyTable/TreatyTable.scss";
-@import "./TreatiesModal/Treaty/Treaty.scss";
+@import "./animations.scss";
+@import "../TreatiesModal/TreatiesModal.scss";
+@import "../TreatiesModal/TreatyTable/TreatyTable.scss";
+@import "../TreatiesModal/Treaty/Treaty.scss";

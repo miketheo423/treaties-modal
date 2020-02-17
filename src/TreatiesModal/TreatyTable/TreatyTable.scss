@@ -14,6 +14,7 @@
 
       .empty-message {
         color: $color-blue;
+        animation: fade-in 0.3s linear both;
       }
     }
   }
@@ -137,6 +138,7 @@
   .table {
     width: 100%;
     border-collapse: collapse;
+    animation: fade-in 0.3s linear both;
 
     &__header {
       background-color: $color-light-grey;
