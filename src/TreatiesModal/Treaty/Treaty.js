@@ -24,7 +24,13 @@ const Treaty = ({ treaty, action, onSelect }) => {
 
   return (
     <>
-      <tr className='treaty'>
+      <tr
+        onClick={() => {
+          onSelect(treaty);
+          selectTreaty(treaty);
+        }}
+        className='treaty'
+      >
         <td>
           <label className='checkbox__label'>
             <input

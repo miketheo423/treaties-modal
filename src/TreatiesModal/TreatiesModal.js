@@ -30,6 +30,15 @@ const TreatiesModal = () => {
     }, 100);
   };
 
+  const handleActionChange = (selectedTreaties, action) => {
+    if (selectedTreaties.length) {
+      setTimeout(() => setAction(action), 200);
+      clearSelectedTreaties();
+    } else {
+      setAction(action);
+    }
+  };
+
   const renderAction = action =>
     action === "add" ? <AddIcon /> : <RemoveIcon />;
 
@@ -66,10 +75,9 @@ const TreatiesModal = () => {
           </div>
           <div className='treaty-tabs'>
             <button
-              onClick={() => {
-                clearSelectedTreaties();
-                setAction("remove");
-              }}
+              onClick={() =>
+                handleActionChange(state.selectedTreaties, "remove")
+              }
               className={`treaties-tab ${action === "remove" &&
                 "treaties-tab--active"}`}
             >
@@ -77,10 +85,7 @@ const TreatiesModal = () => {
               <span className='treaties-tab__count'>1,203</span>
             </button>
             <button
-              onClick={() => {
-                clearSelectedTreaties();
-                setAction("add");
-              }}
+              onClick={() => handleActionChange(state.selectedTreaties, "add")}
               className={`treaties-tab ${action === "add" &&
                 "treaties-tab--active"}`}
             >
