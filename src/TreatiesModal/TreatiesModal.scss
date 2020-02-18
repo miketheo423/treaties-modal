@@ -106,7 +106,7 @@ $color-blue: #005be7;
 
 .treaty-tabs {
   display: flex;
-  border-bottom: 1px solid $color-light-grey;
+  border-bottom: 2px solid $color-light-grey;
 
   .treaties-tab {
     position: relative;
@@ -121,13 +121,12 @@ $color-blue: #005be7;
     display: flex;
     align-items: center;
     transition: all 0.2s linear;
-    overflow: hidden;
 
     &::before {
       content: "";
       background-color: $color-blue;
       position: absolute;
-      bottom: 0;
+      bottom: -2px;
       left: 0;
       width: 100%;
       height: 1px;

@@ -171,6 +171,62 @@ const availableTreaties = [
     lineOfBusiniess: "Commercial",
     cedant: "ABC Insurance",
     type: "available"
+  },
+  {
+    id: Math.floor(Math.random() * 999999),
+    name: "Treaty #13",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
+    type: "available"
+  },
+  {
+    id: Math.floor(Math.random() * 999999),
+    name: "Treaty #14",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
+    type: "available"
+  },
+  {
+    id: Math.floor(Math.random() * 999999),
+    name: "Treaty #15",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
+    type: "available"
+  },
+  {
+    id: Math.floor(Math.random() * 999999),
+    name: "Treaty #16",
+    number: "ABCAU",
+    treatyType: "Catastrophe",
+    currency: "British Pound (GBP)",
+    perRiskLimit: "-",
+    occuranceLimit: "5,000,000",
+    attachmentPoint: "10,000,000",
+    attachmentBasis: "Losses Occuring",
+    lineOfBusiniess: "Commercial",
+    cedant: "ABC Insurance",
+    type: "available"
   }
 ];
 
