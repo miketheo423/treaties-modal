@@ -19,6 +19,12 @@ $color-blue: #005be7;
   .icon {
     fill: $dark-color;
   }
+
+  &:not(:disabled) {
+    &:hover {
+      background-color: darken($light-color, 5%);
+    }
+  }
 }
 
 .panel {
