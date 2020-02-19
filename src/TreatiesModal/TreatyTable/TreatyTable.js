@@ -67,7 +67,7 @@ function TreatyTable({ tab, action, treaties }) {
   };
 
   const renderTreaties = treaties => {
-    return treaties.map((treaty, index) => {
+    return treaties.map(treaty => {
       return (
         <Treaty
           key={treaty.id}

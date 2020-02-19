@@ -32,7 +32,7 @@ const TreatiesModal = () => {
 
   const handleActionChange = (selectedTreaties, action) => {
     if (selectedTreaties.length) {
-      setTimeout(() => setAction(action), 200);
+      setTimeout(() => setAction(action), 300);
       clearSelectedTreaties();
     } else {
       setAction(action);

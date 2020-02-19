@@ -51,14 +51,14 @@
     position: relative;
     overflow: hidden;
     outline: transparent;
-    transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transition: all 0.4s ease-in-out;
 
     .action {
       letter-spacing: inherit;
-      transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+      transition: all 0.4s ease-in-out;
       position: absolute;
-      left: 0;
-      transform: translateX(-100%);
+      left: 14px;
+      transform: translateX(-150%);
       display: flex;
       align-items: center;
       text-transform: capitalize;
@@ -108,29 +108,18 @@
 
     &--add {
       @include button-variation($color-light-green, $color-dark-green);
-      width: 212px;
-
-      .action {
-        transform: translateX(18px);
-      }
-
-      .counter {
-        &__next-count {
-          transform: translateY(0px);
-        }
-
-        &__base-count {
-          transform: translateY(14px);
-        }
-      }
+      width: 208px;
     }
 
     &--remove {
       @include button-variation($color-light-red, $color-dark-red);
-      width: 234px;
+      width: 232px;
+    }
 
+    &--add,
+    &--remove {
       .action {
-        transform: translateX(25%);
+        transform: translateX(0);
       }
     }
   }
